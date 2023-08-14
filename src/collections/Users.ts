@@ -5,13 +5,17 @@ const Users: CollectionConfig = {
   auth: true,
   admin: {
     useAsTitle: 'email',
+    group: 'Settings',
   },
   access: {
     read: () => true,
   },
   fields: [
     // Email added by default
-    // Add more fields as needed
+    {
+      name: 'name',
+      type: 'text',
+    }
   ],
 };
 
