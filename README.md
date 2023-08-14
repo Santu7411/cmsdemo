@@ -1,36 +1,19 @@
-# Payload Blank Template
+# headless-dtc
 
-A blank template for [Payload](https://github.com/payloadcms/payload) to help you get up and running quickly. This repo may have been created by running `npx create-payload-app` and selecting the "blank" template or by cloning this template on [Payload Cloud](https://payloadcms.com/new/clone/blank).
+This project was created using create-payload-app using the blank template.
 
-## 🛠️ Development
+## How to Use
 
-To spin up the project locally, follow these steps:
+`yarn dev` will start up your application and reload on any changes.
 
-1. First clone the repo
-1. Then `cd YOUR_PROJECT_REPO && cp .env.example .env`
-1. Next `yarn && yarn dev` (or `docker-compose up`, see [Docker](#docker))
-1. Now open `http://localhost:3000/admin` in your browser
-1. Create your first admin user using the form on the page
+### Docker
 
-That's it! Changes made in `./src` will be reflected in your app.
+If you have docker and docker-compose installed, you can run `docker-compose up`
 
-### 🐋 Docker
+To build the docker image, run `docker build -t my-tag .`
 
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this project locally. To do so, follow these steps:
+Ensure you are passing all needed environment variables when starting up your container via `--env-file` or setting them with your deployment.
 
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+The 3 typical env vars will be `MONGODB_URI`, `PAYLOAD_SECRET`, and `PAYLOAD_CONFIG_PATH`
 
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## 🚀 Production
-
-To run Payload in production, you need to build and serve the Admin panel. To do so, follow these steps:
-
-1. First invoke the `payload build` script by running `yarn build` or `npm run build` in your project root. This creates a `./build` directory with a production-ready admin bundle.
-1. Then run `yarn serve` or `npm run serve` to run Node in production and serve Payload from the `./build` directory.
-
-### ☁️ Deployment
-
-The easiest way to deploy your project is to use [Payload Cloud](https://payloadcms.com/new/import), a one-click hosting solution to deploy production-ready instances of your Payload apps directly from your GitHub repo. You can also deploy for app manually, check out the [deployment documentation](https://payloadcms.com/docs/production/deployment) for full details.
+`docker run --env-file .env -p 3000:3000 my-tag`
